@@ -18,7 +18,7 @@
         <button id="zoomout" onclick="zoom('out')">Zoom Out</button><br />
         <button id="screenshot-button" style="visibility:hidden;" onclick="showcropimg();">Take screenshot</button><br />
         <a id="state">模型載入中...</a><br />
-        <button id="webcampredict" onclick="webcampredict2()">Predict</button><br />
+        <button id="webcampredict" onclick="webcampredict()">Predict</button><br />
     </div>
     <script>
         const captureVideoButton =
@@ -148,40 +148,6 @@
             }
             canvasvideo2.getContext('2d').putImageData(imageData, 0, 0);
         };
-        function imagebalance(highalpha, lowalpha) {
-            var imageData = canvasvideo2.getContext('2d').getImageData(0, 0, canvasvideo2.width, canvasvideo2.height);
-            var pixelArray = new Array();
-            for (let j = 0; j < imageData.data.length / 4; j++) {
-                for (let i = 0; i < 3; i++) {
-                    pixelArray[3 * j + i] = parseInt(imageData.data[4 * j + i]);
-                }
-            }
-            pixelArray.sort(function (a, b) {
-                return a - b;
-            });
-            var highsearchlen = (pixelArray.length * highalpha).toFixed(0);
-            var lowsearchlen = (pixelArray.length * lowalpha).toFixed(0);
-            var pxAmin = 0;
-            var pxAmax = 0;
-            for (i = 0; i < lowsearchlen; i++) {
-                pxAmin += pixelArray[i];
-            }
-            for (i = (pixelArray.length - highsearchlen); i < pixelArray.length; i++) {
-                pxAmax += pixelArray[i];
-            }
-            pxAmin /= lowsearchlen;
-            pxAmax /= highsearchlen;
-            for (let j = 0; j < imageData.data.length / 4; j++) {
-                for (let i = 0; i < 3; i++) {
-                    var pixel = imageData.data[4 * j + i];
-                    pixel = (pixel - pxAmin) * (255 / (pxAmax - pxAmin));
-                    if (pixel < 0) pixel = 0;
-                    if (pixel > 255) pixel = 255;
-                    imageData.data[4 * j + i] = pixel;
-                }
-            }
-            canvasvideo2.getContext('2d').putImageData(imageData, 0, 0);
-        }
         async function webcampredict() {
             document.getElementById("state").innerHTML = "計算中...";
             //await showcropimg();
@@ -196,9 +162,9 @@
                     maxBoxes: 5,          // defaults to 20
                     scoreThreshold: .1,   // defaults to .5
                     iouThreshold: .5,     // defaults to .3
-                    numClasses: 2,       // defaults to 80 for yolo v3, tiny yolo v2, v3 and 20 for tiny yolo v1
-                    anchors: v3_tiny_drug_anchors,       // v3_tiny_drug_anchors  v3_tiny_anchors
-                    classNames: drug_classes,    // drug_classes  coco_classes
+                    numClasses: 80,       // defaults to 80 for yolo v3, tiny yolo v2, v3 and 20 for tiny yolo v1
+                    anchors: v3_tiny_anchors,       // v3_tiny_drug_anchors  v3_tiny_anchors
+                    classNames: coco_classes,    // drug_classes  coco_classes
                     inputSize: 416,       // defaults to 416
                 }
             );
