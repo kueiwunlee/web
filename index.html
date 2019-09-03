@@ -6,7 +6,7 @@
     <script src="yolo.js"></script>
 </head>
 <body>
-    <h1>Test on webcam!!!</h1>
+    <h1>Test!YO!!!2</h1>
     <div id="screenshot">
         <!--style="text-align:center;"-->
         <button id="capture-video" onclick="initCameraStream();">Capture Webcam Video</button><br />
@@ -197,13 +197,11 @@
                 ctx.strokeStyle = "green";
                 ctx.stroke();
                 ctx.fillStyle = "green";
-                await ctx.fillRect(left, top, category.length * 10 + 20, 25);
+                await ctx.fillRect(left, top, category.length * 10 + 35, 25);
                 ctx.fillStyle = "white";
                 ctx.font = "20px Georgia";
                 await ctx.fillText(category + ":" + (score * 100).toFixed(0)+"%", left, top + 18);
             }
-            
-            preds_vector.dispose();
             document.getElementById("state").innerHTML = "完成預測";
         }
         var myYolo = "";
