@@ -177,6 +177,7 @@
                 var left = boxes[i].left;
                 var bottom = boxes[i].bottom;
                 var right = boxes[i].right;
+                var score = boxes[i].score;
                 var category = boxes[i].class;
                 //if(category=="person"){break}
                 //crop img to yolocanvas
@@ -196,10 +197,10 @@
                 ctx.strokeStyle = "green";
                 ctx.stroke();
                 ctx.fillStyle = "green";
-                await ctx.fillRect(left, top, category.length * 10 + 10, 25);
+                await ctx.fillRect(left, top, category.length * 10 + 20, 25);
                 ctx.fillStyle = "white";
                 ctx.font = "20px Georgia";
-                await ctx.fillText(category, left, top + 18);
+                await ctx.fillText(category + ":" + (score * 100).toFixed(0)+"%", left, top + 18);
             }
             
             preds_vector.dispose();
