@@ -1,6 +1,6 @@
 const v1_tiny_model = 'https://raw.githubusercontent.com/shaqian/tfjs-yolo-demo/master/dist/model/v1tiny/model.json';
 const v2_tiny_model = 'https://raw.githubusercontent.com/shaqian/tfjs-yolo-demo/master/dist/model/v2tiny/model.json';
-const v3_tiny_model = 'https://raw.githubusercontent.com/shaqian/tfjs-yolo-demo/master/dist/model/v3tiny/model.json';
+const v3_tiny_model = 'https://raw.githubusercontent.com/shaqian/tfjs-yolo-demo/master/dist/model/v3tiny/model.json'; //good demo
 //const v3_tiny_model = 'https://raw.githubusercontent.com/calvinlee1102/drug/master/tiny_yolov3_trained/model.json';
 const v3_model = 'https://raw.githubusercontent.com/shaqian/tfjs-yolo-demo/master/dist/model/v3/model.json';
 const v1_tiny_anchors = [

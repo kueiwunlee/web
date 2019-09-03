@@ -6,7 +6,7 @@
     <script src="yolo.js"></script>
 </head>
 <body>
-    <h1>Test!YO!!!2</h1>
+    <h1>Test!YO!!!3</h1>
     <div id="screenshot">
         <!--style="text-align:center;"-->
         <button id="capture-video" onclick="initCameraStream();">Capture Webcam Video</button><br />
@@ -121,32 +121,7 @@
             canvasvideo2.getContext('2d').drawImage(canvas, 0, 0);
             //await imagebalance(highalpha, lowalpha);
             canvasvideo2.getContext('2d').drawImage(canvasvideo2, (rectlen * (1 - zoomsize) / 2), (rectlen * (1 - zoomsize) / 2), rectlen * zoomsize, rectlen * zoomsize, 0, 0, rectlen, rectlen);
-            var imageData = canvasvideo2.getContext('2d').getImageData(0, 0, canvas.width, canvas.height);
-            if (channel == 1) {
-                for (let j = 0; j < imageData.data.length / 4; j++) {
-                    //Gray channel.
-                    var red = imageData.data[j * 4];
-                    var green = imageData.data[j * 4 + 1];
-                    var blue = imageData.data[j * 4 + 2];
-                    var gray = (red * 299 + green * 587 + blue * 114 + 500) / 1000;
-                    if (gray < 0) gray = 0;
-                    if (gray > 255) gray = 255;
-                    imageData.data[j * 4] = gray;
-                    imageData.data[j * 4 + 1] = gray;
-                    imageData.data[j * 4 + 2] = gray;
-                }
-            } else {
-                for (let j = 0; j < imageData.data.length / 4; j++) {
-                    // All channel.
-                    var red = imageData.data[j * 4];
-                    var green = imageData.data[j * 4 + 1];
-                    var blue = imageData.data[j * 4 + 2];
-                    imageData.data[j * 4] = red;
-                    imageData.data[j * 4 + 1] = green;
-                    imageData.data[j * 4 + 2] = blue;
-                }
-            }
-            canvasvideo2.getContext('2d').putImageData(imageData, 0, 0);
+            
         };
         async function webcampredict() {
             document.getElementById("state").innerHTML = "計算中...";
@@ -197,7 +172,7 @@
                 ctx.strokeStyle = "green";
                 ctx.stroke();
                 ctx.fillStyle = "green";
-                await ctx.fillRect(left, top, category.length * 10 + 35, 25);
+                await ctx.fillRect(left, top, category.length * 10 + 50, 25);
                 ctx.fillStyle = "white";
                 ctx.font = "20px Georgia";
                 await ctx.fillText(category + ":" + (score * 100).toFixed(0)+"%", left, top + 18);
