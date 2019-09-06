@@ -6,7 +6,7 @@
     <script src="yolo.js"></script>
 </head>
 <body>
-    <h1>Test!YO!!!8</h1>
+    <h1>Test!YO!!!9</h1>
     <div id="screenshot">
         <!--style="text-align:center;"-->
         <button id="capture-video" onclick="initCameraStream();">Capture Webcam Video</button><br />
@@ -29,12 +29,11 @@
         }
         function do_process() {
             alert(canvasvideo2.toDataURL().length);
-            break
-            var Req = new XMLHttpRequest();
-            Req.open('get', 'https://us-central1-cghweb-198504.cloudfunctions.net/function-1?message=helloyoyoyo', true);
-            Req.onload = reqOnload;
-            Req.onerror = reqError;
-            Req.send();
+            //var Req = new XMLHttpRequest();
+            //Req.open('get', 'https://us-central1-cghweb-198504.cloudfunctions.net/function-1?message=helloyoyoyo', true);
+            //Req.onload = reqOnload;
+            //Req.onerror = reqError;
+            //Req.send();
         }
 
         const captureVideoButton = document.querySelector('#capture-button');
