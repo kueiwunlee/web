@@ -6,7 +6,7 @@
     <script src="yolo.js"></script>
 </head>
 <body>
-    <h1>Test!YO!!!9</h1>
+    <h1>Test!YO!!!7</h1>
     <div id="screenshot">
         <!--style="text-align:center;"-->
         <button id="capture-video" onclick="initCameraStream();">Capture Webcam Video</button><br />
@@ -16,7 +16,7 @@
         <canvas id="videocanvas2"></canvas><canvas id="yolocanvas"></canvas><br />
         <button id="zoomin" onclick="zoom('in')">Zoom In</button>
         <button id="zoomout" onclick="zoom('out')">Zoom Out</button><br />
-        <button id="screenshot-button" style="visibility:hidden;" onclick="showcropimg();">Take screenshot</button><br />
+        <button id="screenshot-button" style="visibility:hidden;" onclick="showcropimg();">Take screenshot</button><canvas id="canvas64"></canvas><br />
         <a id="state">模型載入中...</a><br />
         <button id="webcampredict" onclick="do_process()">Predict</button><br />
     </div>
@@ -28,14 +28,14 @@
             console.log('錯誤', err)
         }
         function do_process() {
-            alert(canvasvideo2.toDataURL().length);
+            alert(canvas64.toDataURL().length);
             //var Req = new XMLHttpRequest();
             //Req.open('get', 'https://us-central1-cghweb-198504.cloudfunctions.net/function-1?message=helloyoyoyo', true);
             //Req.onload = reqOnload;
             //Req.onerror = reqError;
             //Req.send();
         }
-
+        var canvas64 = document.querySelector('canvas64');
         const captureVideoButton = document.querySelector('#capture-button');
         const screenshotButton = document.querySelector('#screenshot-button');
         const canvasvideo = document.querySelector('#videocanvas');
@@ -135,7 +135,10 @@
             canvasvideo2.getContext('2d').drawImage(canvas, 0, 0);
             //await imagebalance(highalpha, lowalpha);
             canvasvideo2.getContext('2d').drawImage(canvasvideo2, (rectlen * (1 - zoomsize) / 2), (rectlen * (1 - zoomsize) / 2), rectlen * zoomsize, rectlen * zoomsize, 0, 0, rectlen, rectlen);
-
+            
+            canvas64.width = 64;
+            canvas64.height = 64;
+            canvas64.getContext('2d').drawImage(canvasvideo2, 64, 64);
         };
         async function webcampredict() {
             document.getElementById("state").innerHTML = "計算中...";
