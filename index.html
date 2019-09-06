@@ -6,7 +6,7 @@
     <script src="yolo.js"></script>
 </head>
 <body>
-    <h1>Test!YO!!!2</h1>
+    <h1>Test!YO!!!3</h1>
     <div id="screenshot">
         <!--style="text-align:center;"-->
         <button id="capture-video" onclick="initCameraStream();">Capture Webcam Video</button><br />
@@ -138,7 +138,7 @@
             //await imagebalance(highalpha, lowalpha);
             canvasvideo2.getContext('2d').drawImage(canvasvideo2, (rectlen * (1 - zoomsize) / 2), (rectlen * (1 - zoomsize) / 2), rectlen * zoomsize, rectlen * zoomsize, 0, 0, rectlen, rectlen);
             
-            canvas64.getContext('2d').drawImage(canvasvideo2, 64, 64);
+            canvas64.getContext('2d').drawImage(canvasvideo2, 0,0,64,64);
         };
         async function webcampredict() {
             document.getElementById("state").innerHTML = "計算中...";
