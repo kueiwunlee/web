@@ -6,7 +6,7 @@
     <script src="yolo.js"></script>
 </head>
 <body>
-    <h1>Test!YO!!!5</h1>
+    <h1>Test!YO!!!6</h1>
     <div id="screenshot">
         <!--style="text-align:center;"-->
         <button id="capture-video" onclick="initCameraStream();">Capture Webcam Video</button><br />
@@ -21,6 +21,17 @@
         <button id="webcampredict" onclick="webcampredict()">Predict</button><br />
     </div>
     <script>
+        function reqOnload() {
+            alert(this.responseText);
+        }
+        function reqError(err) {
+            console.log('錯誤', err)
+        }
+        var Req = new XMLHttpRequest();
+        Req.open('get', 'https://us-central1-cghweb-198504.cloudfunctions.net/function-1?message=helloyoyoyo', true);
+        Req.send();
+        Req.onload = reqOnload;
+        Req.onerror = reqError;
         const captureVideoButton =
             document.querySelector('#capture-button');
         const screenshotButton = document.querySelector('#screenshot-button');
