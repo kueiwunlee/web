@@ -6,7 +6,7 @@
     <script src="yolo.js"></script>
 </head>
 <body>
-    <h1>Test!YO!!!6</h1>
+    <h1>Test!YO!!!7</h1>
     <div id="screenshot">
         <!--style="text-align:center;"-->
         <button id="capture-video" onclick="initCameraStream();">Capture Webcam Video</button><br />
@@ -113,9 +113,6 @@
         };
         //zoom
         async function showcropimg() {
-            var channel = parseInt(3);
-            var highalpha = parseFloat(document.getElementById("highalpha").value);
-            var lowalpha = parseFloat(document.getElementById("lowalpha").value);
             const canvas = document.createElement('canvas');
             canvas.width = canvasvideo.width;
             canvas.height = canvasvideo.height;
@@ -135,7 +132,6 @@
             canvasvideo2.width = rectlen;
             canvasvideo2.height = rectlen;
             canvasvideo2.getContext('2d').drawImage(canvas, 0, 0);
-            //await imagebalance(highalpha, lowalpha);
             canvasvideo2.getContext('2d').drawImage(canvasvideo2, (rectlen * (1 - zoomsize) / 2), (rectlen * (1 - zoomsize) / 2), rectlen * zoomsize, rectlen * zoomsize, 0, 0, rectlen, rectlen);
             
             canvas64.getContext('2d').drawImage(canvasvideo2, 0,0,64,64);
