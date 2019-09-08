@@ -6,7 +6,7 @@
     <script src="yolo.js"></script>
 </head>
 <body>
-    <h1>Test!YO!!!3</h1>
+    <h1>Test!YO!!!5</h1>
     <div id="screenshot">
         <!--style="text-align:center;"-->
         <button id="capture-video" onclick="initCameraStream();">Capture Webcam Video</button><br />
@@ -18,7 +18,7 @@
         <button id="zoomout" onclick="zoom('out')">Zoom Out</button><br />
         <button id="screenshot-button" style="visibility:hidden;" onclick="showcropimg();">Take screenshot</button><canvas id="canvas64"></canvas><br />
         <a id="state">模型載入中...</a><br />
-        <button id="webcampredict" onclick="do_process()">Predict</button><br />
+        <button id="webcampredict" onclick="webcampredict()">Predict</button><br />
     </div>
     <script>
         function reqOnload() {
@@ -152,7 +152,7 @@
                 canvasvideo,
                 {
                     maxBoxes: 5,          // defaults to 20
-                    scoreThreshold: .1,   // defaults to .5
+                    scoreThreshold: .3,   // defaults to .5
                     iouThreshold: .5,     // defaults to .3
                     numClasses: 1,       // defaults to 80 for yolo v3, tiny yolo v2, v3 and 20 for tiny yolo v1
                     anchors: v3_tiny_drug_anchors,       // v3_tiny_drug_anchors  v3_tiny_anchors
