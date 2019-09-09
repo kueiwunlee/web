@@ -5,7 +5,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tensorflow/1.2.8/tf.js"></script>
 </head>
 <body>
-    <h1>Test!YO!!!13</h1>
+    <h1>Test!YO!!!15</h1>
     <div id="screenshot">
         <!--style="text-align:center;"-->
         <button id="capture-video" onclick="initCameraStream();">開啟攝影機</button><br />
@@ -18,7 +18,7 @@
         <button id="screenshot-button" style="visibility:hidden;" onclick="showcropimg();">Take screenshot</button><canvas id="canvas64"></canvas><br />
         <progress id="downloadbar" value="0" max="100"></progress><br />
         <a id="state">模型載入中...</a><br />
-        <button id="webcampredict" onclick="webcampredict()">Predict</button><br />
+        <button id="webcampredict" onclick="do_process()">預測</button><br />
     </div>
     <script src="yolo.js"></script>
     <script>
@@ -29,12 +29,12 @@
             console.log('錯誤', err)
         }
         function do_process() {
-            alert(canvas64.toDataURL().length);
-            //var Req = new XMLHttpRequest();
-            //Req.open('get', 'https://us-central1-cghweb-198504.cloudfunctions.net/function-1?message=helloyoyoyo', true);
-            //Req.onload = reqOnload;
-            //Req.onerror = reqError;
-            //Req.send();
+            canvas64.toDataURL();
+            var Req = new XMLHttpRequest();
+            Req.open('get', 'https://us-central1-cghweb-198504.cloudfunctions.net/function-1?message=helloyoyoyo', true);
+            Req.onload = reqOnload;
+            Req.onerror = reqError;
+            Req.send();
         }
         var canvas64 = document.getElementById('canvas64');
         canvas64.width = 64;
