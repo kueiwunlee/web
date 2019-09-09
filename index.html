@@ -5,7 +5,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tensorflow/1.2.8/tf.js"></script>
 </head>
 <body>
-    <h1>Test!YO!!!26</h1>
+    <h1>Test!YO!!!27</h1>
     <div id="screenshot">
         <!--style="text-align:center;"-->
         <button id="capture-video" onclick="initCameraStream();">開啟攝影機</button><br />
@@ -31,6 +31,7 @@
         }
         function do_process() {
             drug_encode = canvas64.toDataURL();
+            alert(drug_encode.length);
             var Req = new XMLHttpRequest();
             Req.open('get', 'https://us-central1-cghweb-198504.cloudfunctions.net/progr?message=' + drug_encode, true);
             Req.onload = reqOnload;
