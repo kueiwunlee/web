@@ -5,11 +5,11 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tensorflow/1.2.8/tf.js"></script>
 </head>
 <body>
-    <h1>Test!YO!!!19</h1>
+    <h1>Test!YO!!!20</h1>
     <div id="screenshot">
         <!--style="text-align:center;"-->
         <button id="capture-video" onclick="initCameraStream();">開啟攝影機</button><br />
-        <video id="streamvideo" class="videostream" autoplay playsinline></video><br /> <!--style="visibility:hidden;height:0px;width:0px;"-->
+        <video id="streamvideo" class="videostream" crossOrigin="Anonymous" autoplay playsinline></video><br /> <!--style="visibility:hidden;height:0px;width:0px;"-->
         <button id="capture-button">照一張</button><br />
         <canvas id="videocanvas" style="visibility:hidden;height:0px;width:0px;" crossOrigin="Anonymous"></canvas><br />
         <canvas id="videocanvas2" crossOrigin="Anonymous"></canvas><canvas id="yolocanvas" crossOrigin="Anonymous"></canvas><br />
@@ -40,8 +40,8 @@
         var canvas64 = document.getElementById('canvas64');
         canvas64.width = 64;
         canvas64.height = 64;
-        var imgtest = document.getElementById('throwimg');
-        canvas64.getContext('2d').drawImage(imgtest, 0, 0, 64, 64);
+        //var imgtest = document.getElementById('throwimg');
+        //canvas64.getContext('2d').drawImage(imgtest, 0, 0, 64, 64);
         const captureVideoButton = document.querySelector('#capture-button');
         const screenshotButton = document.querySelector('#screenshot-button');
         const canvasvideo = document.querySelector('#videocanvas');
