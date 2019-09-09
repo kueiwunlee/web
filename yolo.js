@@ -341,6 +341,7 @@ async function _loadModel(
         return await tf.loadLayersModel(pathOrIOHandler, {
             onProgress: function (percentage) {
                 console.log(percentage);
+                document.getElementById('downloadbar').value = (percentage * 100).toFixed(0);
             }
         });
     }
