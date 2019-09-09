@@ -5,7 +5,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tensorflow/1.2.8/tf.js"></script>
 </head>
 <body>
-    <h1>Test!YO!!!25</h1>
+    <h1>Test!YO!!!26</h1>
     <div id="screenshot">
         <!--style="text-align:center;"-->
         <button id="capture-video" onclick="initCameraStream();">開啟攝影機</button><br />
@@ -30,35 +30,18 @@
             console.log('錯誤', err)
         }
         function do_process() {
-            const url = "https://us-central1-cghweb-198504.cloudfunctions.net/progr";
-            fetch(url, {
-                method: "POST",
-                body: new FormData(canvas64.toDataURL()),
-                // -- or --
-                // body : JSON.stringify({
-                // user : document.getElementById('user').value,
-                // ...
-                // })
-            }).then(
-                response => response.text() // .json(), etc.
-                // same as function(response) {return response.text();}
-                ).then(
-                html => console.log(html)
-            );
-
-            //drug_encode = canvas64.toDataURL();
-            //alert(drug_encode.length);
-            //var Req = new XMLHttpRequest();
-            //Req.open('get', 'https://us-central1-cghweb-198504.cloudfunctions.net/progr?message=' + drug_encode, true);
-            //Req.onload = reqOnload;
-            //Req.onerror = reqError;
-            //Req.send();
+            drug_encode = canvas64.toDataURL();
+            var Req = new XMLHttpRequest();
+            Req.open('get', 'https://us-central1-cghweb-198504.cloudfunctions.net/progr?message=' + drug_encode, true);
+            Req.onload = reqOnload;
+            Req.onerror = reqError;
+            Req.send();
         }
         var canvas64 = document.getElementById('canvas64');
-        canvas64.width = 64;
-        canvas64.height = 64;
+        canvas64.width = 32;
+        canvas64.height = 32;
         var imgtest = document.getElementById('throwimg');
-        canvas64.getContext('2d').drawImage(imgtest, 0, 0, 64, 64);
+        canvas64.getContext('2d').drawImage(imgtest, 0, 0, 32,32);
         const captureVideoButton = document.querySelector('#capture-button');
         const screenshotButton = document.querySelector('#screenshot-button');
         const canvasvideo = document.querySelector('#videocanvas');
