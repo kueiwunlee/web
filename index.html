@@ -5,17 +5,17 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tensorflow/1.2.8/tf.js"></script>
 </head>
 <body>
-    <h1>Test!YO!!!35</h1>
+    <h1>Test!YO!!!36</h1>
     <div id="screenshot">
         <!--style="text-align:center;"-->
         <button id="capture-video" onclick="initCameraStream();">開啟攝影機</button><br />
         <video id="streamvideo" class="videostream" crossOrigin="Anonymous" autoplay playsinline></video><br /> <!--style="visibility:hidden;height:0px;width:0px;"-->
-        <button id="capture-button">照一張</button><br />
+        <button onclick="white_back_calc()">請先拍白底</button><button id="capture-button">照一張</button><br />
         <canvas id="videocanvas" style="visibility:hidden;height:0px;width:0px;" crossOrigin="Anonymous"></canvas><br />
         <canvas id="videocanvas2" crossOrigin="Anonymous"></canvas><canvas id="yolocanvas" crossOrigin="Anonymous"></canvas><br />
         <button id="zoomin" onclick="zoom('in')">Zoom In</button>
         <button id="zoomout" onclick="zoom('out')">Zoom Out</button><br />
-        <button id="screenshot-button" style="visibility:hidden;" onclick="showcropimg();">Take screenshot</button><canvas id="canvas64" crossOrigin="Anonymous"></canvas><br />
+        <button id="screenshot-button" style="visibility:hidden;" onclick="showcropimg();">Take screenshot</button><canvas id="can_wb" crossOrigin="Anonymous"></canvas><canvas id="canvas64" crossOrigin="Anonymous"></canvas><br />
         <progress id="downloadbar" value="0" max="100"></progress><br />
         <a id="state">模型載入中...</a><br />
         <button id="webcampredict" onclick="do_process()">預測</button><br />
@@ -33,15 +33,25 @@
             var a = "";
             var b = "";
             var c = "";
-            imgData = canvas64.getContext('2d').getImageData(0, 0, 20, 20);
+            imgData = can_wb.getContext('2d').getImageData(0, 0, 10, 10);
             for (let j = 0; j < imgData.data.length / 4; j++) {
                 a += (imgData.data[j * 4]) + ",";
                 b += (imgData.data[j * 4 + 1]) + ",";
                 c += (imgData.data[j * 4 + 2]) + ",";
             }
             var get = a.substr(0, a.length - 1) + ":" + b.substr(0, b.length - 1) + ":" + c.substr(0, c.length - 1);
+            var d = "";
+            var e = "";
+            var f = "";
+            imgData = canvas64.getContext('2d').getImageData(0, 0, 20, 20);
+            for (let j = 0; j < imgData.data.length / 4; j++) {
+                d += (imgData.data[j * 4]) + ",";
+                e += (imgData.data[j * 4 + 1]) + ",";
+                f += (imgData.data[j * 4 + 2]) + ",";
+            }
+            var get2 = d.substr(0, d.length - 1) + ":" + e.substr(0, e.length - 1) + ":" + f.substr(0, f.length - 1);
             var Req = new XMLHttpRequest();
-            Req.open('get', 'https://us-central1-cghweb-198504.cloudfunctions.net/progr?message=' + get, true);
+            Req.open('get', 'https://us-central1-cghweb-198504.cloudfunctions.net/progr?message=' + get + ";" + get2, true);
             Req.onload = reqOnload;
             Req.onerror = reqError;
             Req.send();
@@ -49,6 +59,9 @@
         var canvas64 = document.getElementById('canvas64');
         canvas64.width = 20;
         canvas64.height = 20;
+        var can_wb = document.getElementById('can_wb');
+        can_wb.width = 10;
+        can_wb.height = 10;
         var imgtest = document.getElementById('throwimg');
         canvas64.getContext('2d').drawImage(imgtest, 0, 0, canvas64.width, canvas64.height);
         const captureVideoButton = document.querySelector('#capture-button');
@@ -58,6 +71,12 @@
         const img = document.querySelector('#screenshot-img');
         const video = document.querySelector('#streamvideo');
         var zoomsize = 1;
+        async function white_back_calc() {
+            document.getElementById("state").innerHTML = "處理中...";
+            var ctx = can_wb.getContext('2d');
+            await ctx.drawImage(canvasvideo, 0, 0, 10, 10);
+            document.getElementById("state").innerHTML = "白平衡已建檔，若結果異常可再拍一次白底";
+        }
         function zoom(type) {
             if (type == "in") {
                 if (zoomsize > 0.2) {
