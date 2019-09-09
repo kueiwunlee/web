@@ -342,7 +342,7 @@ async function _loadModel(
             onProgress: function (percentage) {
                 console.log(percentage);
                 document.getElementById('downloadbar').value = (percentage * 100).toFixed(0);
-                document.getElementById('state').value = "模型載入中..." + (percentage * 100).toFixed(0) + "%";
+                document.getElementById('state').innerHTML = "模型載入中..." + (percentage * 100).toFixed(0) + "%";
             }
         });
     }
