@@ -16,13 +16,13 @@ const v3_tiny_anchors = [
     10, 14, 23, 27, 37, 58, 81, 82, 135, 169, 344, 319
 ];
 const v3_tiny_drug_anchors = [
-    95,92,124,120,161,75,173,173,256,109,209,288
+    95, 92, 124, 120, 161, 75, 173, 173, 256, 109, 209, 288
 ];
 const v3_masks = {
     "3": [[6, 7, 8], [3, 4, 5], [0, 1, 2]],
     "2": [[3, 4, 5], [1, 2, 3]]
 };
-const drug_classes = ['drug','one'];
+const drug_classes = ['drug', 'one'];
 const coco_classes = [
     'person',
     'bicycle',
@@ -338,7 +338,12 @@ async function _loadModel(
     if (modelUrl) {
         return await tf.loadGraphModel(modelUrl, pathOrIOHandler);
     } else {
-        return await tf.loadLayersModel(pathOrIOHandler);
+        return await tf.loadLayersModel(pathOrIOHandler).progressed(progressData => {
+            console.log(progressData.numberOfBytesRead + '/' + progressData.numberOfBytesTotal);
+        })
+            .then(model => {
+                console.log('loaded!');
+            });;
     }
 }
 
