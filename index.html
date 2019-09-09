@@ -6,7 +6,7 @@
     <script src="yolo.js"></script>
 </head>
 <body>
-    <h1>Test!YO!!!9</h1>
+    <h1>Test!YO!!!10</h1>
     <div id="screenshot">
         <!--style="text-align:center;"-->
         <button id="capture-video" onclick="initCameraStream();">Capture Webcam Video</button><br />
@@ -17,6 +17,7 @@
         <button id="zoomin" onclick="zoom('in')">Zoom In</button>
         <button id="zoomout" onclick="zoom('out')">Zoom Out</button><br />
         <button id="screenshot-button" style="visibility:hidden;" onclick="showcropimg();">Take screenshot</button><canvas id="canvas64"></canvas><br />
+        <progress id="downloadbar" value="0" max="100"></progress>
         <a id="state">模型載入中...</a><br />
         <button id="webcampredict" onclick="webcampredict()">Predict</button><br />
     </div>
