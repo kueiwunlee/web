@@ -5,7 +5,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tensorflow/1.2.8/tf.js"></script>
 </head>
 <body>
-    <h1>Test!YO!!!36</h1>
+    <h1>Test!YO!!!37</h1>
     <div id="screenshot">
         <!--style="text-align:center;"-->
         <button id="capture-video" onclick="initCameraStream();">開啟攝影機</button><br />
@@ -43,11 +43,11 @@
             var d = "";
             var e = "";
             var f = "";
-            imgData = canvas64.getContext('2d').getImageData(0, 0, 20, 20);
-            for (let j = 0; j < imgData.data.length / 4; j++) {
-                d += (imgData.data[j * 4]) + ",";
-                e += (imgData.data[j * 4 + 1]) + ",";
-                f += (imgData.data[j * 4 + 2]) + ",";
+            imgData2 = canvas64.getContext('2d').getImageData(0, 0, 20, 20);
+            for (let j = 0; j < imgData2.data.length / 4; j++) {
+                d += (imgData2.data[j * 4]) + ",";
+                e += (imgData2.data[j * 4 + 1]) + ",";
+                f += (imgData2.data[j * 4 + 2]) + ",";
             }
             var get2 = d.substr(0, d.length - 1) + ":" + e.substr(0, e.length - 1) + ":" + f.substr(0, f.length - 1);
             var Req = new XMLHttpRequest();
