@@ -5,17 +5,17 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tensorflow/1.2.8/tf.js"></script>
 </head>
 <body>
-    <h1>Test!YO!!!16</h1>
+    <h1>Test!YO!!!17</h1>
     <div id="screenshot">
         <!--style="text-align:center;"-->
         <button id="capture-video" onclick="initCameraStream();">開啟攝影機</button><br />
         <video id="streamvideo" class="videostream" autoplay playsinline></video><br /> <!--style="visibility:hidden;height:0px;width:0px;"-->
         <button id="capture-button">照一張</button><br />
-        <canvas id="videocanvas" style="visibility:hidden;height:0px;width:0px;"></canvas><br />
-        <canvas id="videocanvas2"></canvas><canvas id="yolocanvas"></canvas><br />
+        <canvas id="videocanvas" style="visibility:hidden;height:0px;width:0px;" crossOrigin="anonymous"></canvas><br />
+        <canvas id="videocanvas2" crossOrigin="anonymous"></canvas><canvas id="yolocanvas" crossOrigin="anonymous"></canvas><br />
         <button id="zoomin" onclick="zoom('in')">Zoom In</button>
         <button id="zoomout" onclick="zoom('out')">Zoom Out</button><br />
-        <button id="screenshot-button" style="visibility:hidden;" onclick="showcropimg();">Take screenshot</button><canvas id="canvas64"></canvas><br />
+        <button id="screenshot-button" style="visibility:hidden;" onclick="showcropimg();">Take screenshot</button><canvas id="canvas64" crossOrigin="anonymous"></canvas><br />
         <progress id="downloadbar" value="0" max="100"></progress><br />
         <a id="state">模型載入中...</a><br />
         <button id="webcampredict" onclick="do_process()">預測</button><br />
