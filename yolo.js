@@ -338,12 +338,14 @@ async function _loadModel(
     if (modelUrl) {
         return await tf.loadGraphModel(modelUrl, pathOrIOHandler);
     } else {
-        return await tf.loadLayersModel(pathOrIOHandler, true, onProgress);
+        return await tf.loadLayersModel(pathOrIOHandler, {
+            onProgress: function (percentage) {
+                console.log(percentage);
+            }
+        });
     }
 }
-function onProgress(percentage) {
-    console.log(percentage);
-}
+
 async function _predict(
     version,
     model,
