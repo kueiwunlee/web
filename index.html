@@ -6,7 +6,7 @@
     <script src="yolo.js"></script>
 </head>
 <body>
-    <h1>Test!YO!!!7</h1>
+    <h1>Test!YO!!!8</h1>
     <div id="screenshot">
         <!--style="text-align:center;"-->
         <button id="capture-video" onclick="initCameraStream();">Capture Webcam Video</button><br />
@@ -133,7 +133,7 @@
             canvasvideo2.height = rectlen;
             canvasvideo2.getContext('2d').drawImage(canvas, 0, 0);
             canvasvideo2.getContext('2d').drawImage(canvasvideo2, (rectlen * (1 - zoomsize) / 2), (rectlen * (1 - zoomsize) / 2), rectlen * zoomsize, rectlen * zoomsize, 0, 0, rectlen, rectlen);
-            
+
             canvas64.getContext('2d').drawImage(canvasvideo2, 0,0,64,64);
         };
         async function webcampredict() {
@@ -193,11 +193,20 @@
             document.getElementById("state").innerHTML = "完成預測";
         }
         var myYolo = "";
+        myYolo.addEventListener("progress", function (event) {
+            if (event.lengthComputable) {
+                var percentComplete = event.loaded / event.total;
+                document.getElementById("state").innerHTML = percentComplete;
+            } else {
+                // Unable to compute progress information since the total size is unknown
+            }
+        }, false);
         async function loadmodel() {
             myYolo = await yolo.v3tiny();
             document.getElementById("state").innerHTML = "模型載入完成，開始預測!!!";
         }
         loadmodel();
+
     </script>
 </body>
 </html>
