@@ -6,7 +6,7 @@
 	<script src="class_name_dict.js"></script>
 </head>
 <body>
-    <h1>Test!YO!!!7</h1>
+    <h1>Test!YO!!!8</h1>
     <div id="screenshot">
         <!--style="text-align:center;"-->
         <button id="capture-video" onclick="initCameraStream();">開啟攝影機</button><br />
@@ -27,7 +27,7 @@
     <script src="yolo.js"></script>
     <script>
         function reqOnload() {
-			rank = this.responseText.substring(1, this.responseText.length).split(",");
+			rank = this.responseText.substring(1, this.responseText.length-1).split(",");
 			var ul = document.getElementById("show_pred");
             for (i = 0; i < rank.length; i++) {
                 if (document.getElementById("top" + i)) {
