@@ -28,7 +28,7 @@
     <script>
         function reqOnload() {
             alert(this.responseText.split(",")[0]);
-			rank = await this.responseText.split(",");
+			rank = this.responseText.split(",");
 			var ul = document.getElementById("show_pred");
             for (i = 0; i < rank.length; i++) {
                 if (document.getElementById("top" + i)) {
