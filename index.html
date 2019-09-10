@@ -5,7 +5,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tensorflow/1.2.8/tf.js"></script>
 </head>
 <body>
-    <h1>Test!YO!!!38</h1>
+    <h1>Test!YO!!!</h1>
     <div id="screenshot">
         <!--style="text-align:center;"-->
         <button id="capture-video" onclick="initCameraStream();">開啟攝影機</button><br />
@@ -18,7 +18,7 @@
         <button id="screenshot-button" style="visibility:hidden;" onclick="showcropimg();">Take screenshot</button><canvas id="can_wb" crossOrigin="Anonymous"></canvas><canvas id="canvas64" crossOrigin="Anonymous"></canvas><br />
         <progress id="downloadbar" value="0" max="100"></progress><br />
         <a id="state">模型載入中...</a><br />
-        <button id="webcampredict" onclick="webcampredict()">預測</button><br />
+        <button id="webcampredict" onclick="do_process()">預測</button><br />
         <img id="throwimg" src="drug_pic64x64/00002-3228-30_PART_1_OF_1_CHAL10_SF_391E1C80.jpg" crossorigin="Anonymous" />
     </div>
     <script src="yolo.js"></script>
@@ -51,7 +51,7 @@
             }
             var get2 = d.substr(0, d.length - 1) + ":" + e.substr(0, e.length - 1) + ":" + f.substr(0, f.length - 1);
             var Req = new XMLHttpRequest();
-            Req.open('get', 'https://us-central1-cghweb-198504.cloudfunctions.net/progr?message=' + get + ";" + get2, true);
+            Req.open('get', 'https://us-central1-cghweb-198504.cloudfunctions.net/qwe?message=' + get + ";" + get2, true);
             Req.onload = reqOnload;
             Req.onerror = reqError;
             Req.send();
