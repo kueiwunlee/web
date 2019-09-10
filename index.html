@@ -3,9 +3,10 @@
     <meta charset="utf-8">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tensorflow/1.2.8/tf.js"></script>
+
 </head>
 <body>
-    <h1>Test!YO!!!</h1>
+    <h1>Test!YO!!!3</h1>
     <div id="screenshot">
         <!--style="text-align:center;"-->
         <button id="capture-video" onclick="initCameraStream();">開啟攝影機</button><br />
@@ -19,12 +20,26 @@
         <progress id="downloadbar" value="0" max="100"></progress><br />
         <a id="state">模型載入中...</a><br />
         <button id="webcampredict" onclick="do_process()">預測</button><br />
-        <img id="throwimg" src="drug_pic64x64/00002-3228-30_PART_1_OF_1_CHAL10_SF_391E1C80.jpg" crossorigin="Anonymous" />
+        <img id="throwimg" src="drug_pic64x64/00002-3228-30_PART_1_OF_1_CHAL10_SF_391E1C80.jpg" crossorigin="Anonymous" /><br />
+		Predict Label:<br />
+        <ul id="show_pred" style="list-style:none;"></ul>
     </div>
     <script src="yolo.js"></script>
     <script>
         function reqOnload() {
-            alert(this.responseText[0]);
+            alert(this.responseText.split(",")[0]);
+			rank = await this.responseText.split(",");
+			var ul = document.getElementById("show_pred");
+            for (i = 0; i < rank.length; i++) {
+                if (document.getElementById("top" + i)) {
+                    var element = document.getElementById("top" + i);
+                    element.parentNode.removeChild(element);
+                }
+                var li = document.createElement("li");
+                li.setAttribute("id", "top" + i);
+                ul.appendChild(li);
+                document.getElementById("top" + i).innerHTML = "<img src='drug_pic64x64/" + class_name_dict[rank[i]] + "'>" + class_name_dict[rank[i]];
+            }
         }
         function reqError(err) {
             console.log('錯誤', err)
