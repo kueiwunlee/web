@@ -66,7 +66,7 @@
             }
             var get2 = d.substr(0, d.length - 1) + ":" + e.substr(0, e.length - 1) + ":" + f.substr(0, f.length - 1);
             var Req = new XMLHttpRequest();
-            Req.open('get', 'https://us-central1-cghweb-198504.cloudfunctions.net/qwe?message=' + get + ";" + get2, true);
+            Req.open('get', 'https://us-central1-cghweb-198504.cloudfunctions.net/rdx?message=' + get + ";" + get2, true);
             Req.onload = reqOnload;
             Req.onerror = reqError;
             Req.send();
